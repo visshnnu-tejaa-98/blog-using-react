@@ -1,8 +1,10 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 const CreateBlog = () => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
 	const [author, setAuthor] = useState('');
+	const history = useHistory();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -13,7 +15,10 @@ const CreateBlog = () => {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(blog),
-		}).then(console.log('Post Added'));
+		}).then(() => {
+			console.log('new item added');
+			history.push('/');
+		});
 	};
 	return (
 		<div className='create'>
