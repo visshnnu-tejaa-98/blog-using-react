@@ -3,9 +3,14 @@ const CreateBlog = () => {
 	const [title, setTitle] = useState('');
 	const [body, setBody] = useState('');
 	const [author, setAuthor] = useState('');
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		console.log({ title, author, body });
+	};
 	return (
 		<div className='create'>
-			<form action=''>
+			<form onSubmit={handleSubmit}>
 				<label>Title:</label>
 				<input type='text' required value={title} onChange={(e) => setTitle(e.target.value)} />
 				<label>Author:</label>
